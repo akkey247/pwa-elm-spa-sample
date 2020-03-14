@@ -15,8 +15,8 @@ type Route
 parser : Parser (Route -> a) a
 parser =
     Parser.oneOf
-        [ Parser.map Index (Parser.s "elm-my-spa")
-        , Parser.map View (Parser.s "elm-my-spa" </> Parser.s "view" </> Id.idParser)
+        [ Parser.map Index (Parser.s "pwa-elm-spa-sample")
+        , Parser.map View (Parser.s "pwa-elm-spa-sample" </> Parser.s "view" </> Id.idParser)
         ]
 
 
@@ -41,4 +41,4 @@ routeToString page =
                 View id ->
                     [ "view", Id.toString id ]
     in
-    "/elm-my-spa/" ++ String.join "/" pieces
+    "/pwa-elm-spa-sample/" ++ String.join "/" pieces
