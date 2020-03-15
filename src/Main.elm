@@ -5,7 +5,6 @@ import Browser.Navigation as Nav
 import Env exposing (Env)
 import Html exposing (Html, button, div, text)
 import Html.Events exposing (onClick)
-import Id exposing (Id)
 import Page.Index as IndexPage
 import Page.View as ViewPage
 import Route exposing (Route)
@@ -31,7 +30,7 @@ main =
 type Model
     = NotFound Env
     | Index Env IndexPage.Model
-    | View Env Id ViewPage.Model
+    | View Env Int ViewPage.Model
 
 
 type alias Flags =

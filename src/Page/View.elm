@@ -2,7 +2,6 @@ module Page.View exposing (Model, Msg, init, subscriptions, update, view)
 
 import Env exposing (Env)
 import Html exposing (..)
-import Id exposing (Id)
 import Route
 
 
@@ -12,11 +11,11 @@ import Route
 
 type alias Model =
     { env : Env
-    , id : Id
+    , id : Int
     }
 
 
-init : Env -> Id -> ( Model, Cmd Msg )
+init : Env -> Int -> ( Model, Cmd Msg )
 init env id =
     ( Model env id
     , Cmd.none
@@ -43,7 +42,7 @@ update msg model =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
 
 
@@ -53,9 +52,9 @@ subscriptions model =
 
 view : Model -> { title : String, body : List (Html Msg) }
 view model =
-    { title = "elm-my-app - view"
+    { title = "メニュー"
     , body =
-        [ a [ Route.href Route.Index ] [ text "Back to Index" ]
-        , p [] [ text <| "view " ++ Id.toString model.id ]
+        [ div [] [ a [ Route.href Route.Index ] [ text "トップに戻る" ] ]
+        , div [] [ p [] [ text <| "メニュー " ++ String.fromInt model.id ] ]
         ]
     }

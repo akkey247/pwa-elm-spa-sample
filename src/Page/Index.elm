@@ -2,8 +2,6 @@ module Page.Index exposing (Model, Msg, init, subscriptions, update, view)
 
 import Env exposing (Env)
 import Html exposing (..)
-import Id exposing (Id)
-import Json.Decode as JD
 import Route
 
 
@@ -13,32 +11,14 @@ import Route
 
 type alias Model =
     { env : Env
-    , items : List Item
-    }
-
-
-type alias Item =
-    { id : Id
-    , name : String
+    , items : List Int
     }
 
 
 init : Env -> ( Model, Cmd Msg )
 init env =
     let
-        items =
-            List.range 1 5
-                |> List.map (\i -> "item" ++ String.fromInt i)
-                |> List.map (\name -> ( JD.decodeString Id.idDecoder ("\"" ++ name ++ "\""), name ))
-                |> List.filterMap
-                    (\result ->
-                        case Tuple.first result of
-                            Ok id ->
-                                Just <| Item id (Tuple.second result)
-
-                            _ ->
-                                Nothing
-                    )
+        items = List.range 1 5
     in
     ( Model env items
     , Cmd.none
@@ -65,7 +45,7 @@ update msg model =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Sub.none
 
 
@@ -75,9 +55,8 @@ subscriptions model =
 
 view : Model -> { title : String, body : List (Html Msg) }
 view model =
-    { title = "elm-my-app - index"
+    { title = "トップ"
     , body =
-        [ text "Index:"
-        , ul [] <| List.map (\item -> li [] [ a [ Route.href <| Route.View item.id ] [ text item.name ] ]) model.items
+        [ ul [] <| List.map (\item -> li [] [ a [ Route.href <| Route.View item ] [ text <| "メニュー " ++ String.fromInt item ] ]) model.items
         ]
     }

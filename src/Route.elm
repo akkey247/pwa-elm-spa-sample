@@ -2,21 +2,20 @@ module Route exposing (Route(..), fromUrl, href, parser, routeToString)
 
 import Html exposing (Attribute)
 import Html.Attributes as Attr
-import Id exposing (Id)
 import Url exposing (Url)
 import Url.Parser as Parser exposing ((</>), Parser)
 
 
 type Route
     = Index
-    | View Id
+    | View Int
 
 
 parser : Parser (Route -> a) a
 parser =
     Parser.oneOf
         [ Parser.map Index (Parser.s "pwa-elm-spa-sample")
-        , Parser.map View (Parser.s "pwa-elm-spa-sample" </> Parser.s "view" </> Id.idParser)
+        , Parser.map View (Parser.s "pwa-elm-spa-sample" </> Parser.s "view" </> Parser.int)
         ]
 
 
@@ -39,6 +38,6 @@ routeToString page =
                     []
 
                 View id ->
-                    [ "view", Id.toString id ]
+                    [ "view", String.fromInt id ]
     in
     "/pwa-elm-spa-sample/" ++ String.join "/" pieces
