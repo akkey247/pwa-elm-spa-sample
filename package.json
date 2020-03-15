@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel --public-url /pwa-elm-spa-sample/ src/index.html",
-    "prebuild": "rimraf src.*",
+    "prebuild": "rimraf src.* manifest.*.webmanifest",
     "build": "parcel build -d . --public-url /pwa-elm-spa-sample/ src/index.html"
   },
   "author": "",
