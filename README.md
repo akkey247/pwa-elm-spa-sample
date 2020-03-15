@@ -1,21 +1,21 @@
-# elm-my-spa
+# pwa-elm-spa-sample
 
-elm-my-spa is an elm SPA template inspired by [elm-spa-example](https://github.com/rtfeldman/elm-spa-example).
+PWAでElmのSPAを動かすサンプル
 
-## Getting Started
+# 使い方
 
-1. Install dependencies
+1. インストール
 
-```bash
-$ npm install
+```
+$ npm i
 ```
 
-2. Run app
+2. コンパイル
 
-```bash
-$ npm start
+```
+$ npm run build
 ```
 
-3. Open app
+3. 公開
 
-http://localhost:1234/elm-my-spa/
+GitHub Pages で「master branch /docs folder」として公開する。

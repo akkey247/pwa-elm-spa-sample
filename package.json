@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel --public-url /pwa-elm-spa-sample/ src/index.html",
     "prebuild": "rimraf src.* manifest.*.webmanifest",
-    "build": "parcel build -d ./doc --public-url /pwa-elm-spa-sample/ src/index.html"
+    "build": "parcel build -d ./docs --public-url /pwa-elm-spa-sample/ src/index.html"
   },
   "author": "",
   "license": "MIT",
